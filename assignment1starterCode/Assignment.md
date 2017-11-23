@@ -1,6 +1,6 @@
 # Bitcoin and Cryptocurrency Technologies
 
-### Assignment 1: ScroogeCoin
+## Assignment 1: ScroogeCoin
 
 In ScroogeCoin (Lecture 1), the central authority Scrooge receives transactions
 from users. You will implement the logic used by Scrooge to process transactions
@@ -29,9 +29,8 @@ More specifically, the raw data that is signed is obtained from the `getRawDataT
 method. To verify a signature, you will use the `verifySignature()` method
 included in the provided file Crypto.java:
 
-```
-public static boolean verifySignature(PublicKey pubKey, byte[] message,
-byte[] signature)
+```java
+public static boolean verifySignature(PublicKey pubKey, byte[] message, byte[] signature)
 ```
 
 This method takes a public key, a message and a signature, and returns true if
@@ -64,13 +63,13 @@ pool, and get a list of all `UTXO`s in the pool.
 You will be responsible for creating a file called `TxHandler.java` that implements
 the following API:
 
-```
-public   class   TxHandler  {
+```java
+public class TxHandler {
     /** Creates a public ledger whose current UTXOPool (collection of unspent
      * transaction outputs) is utxoPool. This should make a defensive copy of
      * utxoPool by using the UTXOPool(UTXOPool uPool) constructor.
      */
-     public   TxHandler (UTXOPool utxoPool);
+     public TxHandler(UTXOPool utxoPool);
 
     /** Returns true if
      * (1) all outputs claimed by tx are in the current UTXO pool,
@@ -80,14 +79,14 @@ public   class   TxHandler  {
      * (5) the sum of tx’s input values is greater than or equal to the sum of
            its output values; and false otherwise.
      */
-      public   boolean   isValidTx (Transaction tx);
+      public boolean isValidTx(Transaction tx);
 
      /** Handles each epoch by receiving an unordered array of proposed
       * transactions, checking each transaction for correctness,
       * returning a mutually valid array of accepted transactions,
       * and updating the current UTXO pool as appropriate.
       */
- public  Transaction[]  handleTxs (Transaction[] possibleTxs);
+ public Transaction[] handleTxs(Transaction[] possibleTxs);
 }
 ```
 
@@ -105,4 +104,4 @@ were accepted in a previous call to `handleTxs()`.
 
 **Extra Credit**:  Create a second file called `MaxFeeTxHandler.java` whose `handleTxs()`
 method finds a set of transactions with maximum total transaction fees -- i.e.
-maximize the sum over all transactions in the set of (sum of input values - sum of output values)).
+maximize the sum over all transactions in the set of (sum of input values - sum of output values).
